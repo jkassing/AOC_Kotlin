@@ -31,14 +31,12 @@ fun main() {
                 for(number in board.numbers){
                     if(number.value == drawnNumber) {
                         number.marked = true
-                        if (board.hasWon()){
-                            if (boards.all { it.hasWon() } || !lastBoard) {
-                                return board.numbers.filterNot { it.marked }.sumOf { it.value } * drawnNumber
-                            }
-                            else {
-                                boardsWon.add(board)
-                                break
-                            }
+                        if (boards.all { it.hasWon() } || !lastBoard && board.hasWon()) {
+                            return board.numbers.filterNot { it.marked }.sumOf { it.value } * drawnNumber
+                        }
+                        else if(lastBoard && board.hasWon()) {
+                            boardsWon.add(board)
+                            break
                         }
                     }
                 }
