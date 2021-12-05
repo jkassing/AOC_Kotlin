@@ -21,19 +21,6 @@ fun main() {
         }
         return Integer.parseInt(o2Rating.first(), 2) * Integer.parseInt(co2Rating.first(), 2)
     }
-    /*val test = """
-        00100
-        11110
-        10110
-        10111
-        10101
-        01111
-        00111
-        11100
-        10000
-        11001
-        00010
-        01010""".trimIndent().split("\n")*/
 
     val binaryNumbers = readInput("input_day03")
     println("PART I: ${ part1(binaryNumbers) } power consumption")
