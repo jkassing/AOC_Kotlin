@@ -31,7 +31,7 @@ fun main() {
                 for(number in board.numbers){
                     if(number.value == drawnNumber) {
                         number.marked = true
-                        if (boards.all { it.hasWon() } || !lastBoard && board.hasWon()) {
+                        if (!lastBoard && board.hasWon() || boards.all { it.hasWon() }) {
                             return board.numbers.filterNot { it.marked }.sumOf { it.value } * drawnNumber
                         }
                         else if(lastBoard && board.hasWon()) {
