@@ -29,16 +29,17 @@ fun main() {
             val boardsWon = mutableListOf<Board>()
             for(board in boards){
                 for(number in board.numbers){
-                    if(number.value == drawnNumber){
+                    if(number.value == drawnNumber) {
                         number.marked = true
-                        if(board.hasWon())
-                            if(lastBoard && (boards.size - boardsWon.size) > 1){
+                        if (board.hasWon()){
+                            if (boards.all { it.hasWon() } || !lastBoard) {
+                                return board.numbers.filterNot { it.marked }.sumOf { it.value } * drawnNumber
+                            }
+                            else {
                                 boardsWon.add(board)
                                 break
                             }
-                            else{
-                                return board.numbers.filterNot { it.marked }.sumOf { it.value } * drawnNumber
-                            }
+                        }
                     }
                 }
             }
