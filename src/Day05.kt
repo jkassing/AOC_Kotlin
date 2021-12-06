@@ -1,3 +1,6 @@
+import kotlin.math.abs
+import kotlin.math.max
+
 fun main() {
     fun findVentFields(input: List<String> , diagonalAllowed: Boolean): Int {
         val fields = mutableMapOf<Pair<Int,Int>, Int>()
@@ -30,6 +33,6 @@ fun main() {
         5,5 -> 8,2""".trimIndent().split("\n")
 
     val input = readInput("input_day05")
-    println("PART I: ${ findVentFields(input, false) } scans had higher measurements than the previous scan!")
-    println("PART II: ${ findVentFields(input, true) } windows had higher measurements than the previous window!")
+    println("PART I: ${ findVentFields(input, false) } dangerous vent fields found!")
+    println("PART II: ${ findVentFields(input, true) } dangerous vent fields found!")
 }
