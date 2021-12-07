@@ -1,20 +1,7 @@
 fun main() {
-    fun part1(scanValues: List<Int> ): Int {
-        var depthIncreased = 0
-        for(scan in scanValues.windowed(2)){
-            if(scan[0] < scan[1]) depthIncreased++
-        }
-        return depthIncreased
-    }
+    fun part1(scanValues: List<Int>): Int = scanValues.windowed(2).count { it[0] < it[1] }
 
-    fun part2(scanValues: List<Int> ): Int {
-        var depthIncreased = 0
-        for(scan in scanValues.windowed(4)){
-            // scan[1] and scan[2] irrelevant as in both sums
-            if(scan[0] < scan[3]) depthIncreased++
-        }
-        return depthIncreased
-    }
+    fun part2(scanValues: List<Int>): Int = scanValues.windowed(4).count { it[0] < it[3] }
 
     val sonarScan = readInput("input_day01")
     val scanValues = sonarScan.map { it.toInt() }

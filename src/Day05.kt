@@ -1,6 +1,3 @@
-import kotlin.math.abs
-import kotlin.math.max
-
 fun main() {
     fun findVentFields(input: List<String> , diagonalAllowed: Boolean): Int {
         val fields = mutableMapOf<Pair<Int,Int>, Int>()
@@ -20,18 +17,6 @@ fun main() {
         }
         return fields.filter { it.value > 1 }.size
     }
-    val test = """
-        0,9 -> 5,9
-        8,0 -> 0,8
-        9,4 -> 3,4
-        2,2 -> 2,1
-        7,0 -> 7,4
-        6,4 -> 2,0
-        0,9 -> 2,9
-        3,4 -> 1,4
-        0,0 -> 8,8
-        5,5 -> 8,2""".trimIndent().split("\n")
-
     val input = readInput("input_day05")
     println("PART I: ${ findVentFields(input, false) } dangerous vent fields found!")
     println("PART II: ${ findVentFields(input, true) } dangerous vent fields found!")
