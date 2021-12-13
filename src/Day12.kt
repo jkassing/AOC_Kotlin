@@ -8,7 +8,7 @@ fun getValidStepsTwice(path: List<String>, connections: Map<String, List<String>
             path.none { it[0].isLowerCase() && Collections.frequency(path, it) == 2 }}
 
 fun main() {
-    fun part1(input: List<String>, getValidSteps: (List<String>, Map<String, List<String>>) -> List<String>?): Int {
+    fun findPaths(input: List<String>, getValidSteps: (List<String>, Map<String, List<String>>) -> List<String>?): Int {
         // get connections
         val connections = mutableMapOf<String, List<String>>().withDefault { emptyList() }
         input.forEach {
@@ -29,6 +29,6 @@ fun main() {
         return solutionPaths.size
     }
     val input = readInput("input_day12")
-    println("PART I: ${part1(input, ::getValidSteps)}")
-    println("PART 2: ${part1(input, ::getValidStepsTwice)}")
+    println("PART I: ${findPaths(input, ::getValidSteps)}")
+    println("PART 2: ${findPaths(input, ::getValidStepsTwice)}")
 }
