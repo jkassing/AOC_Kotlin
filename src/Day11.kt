@@ -1,5 +1,5 @@
 fun main() {
-    fun simulateOctopi(octoList: MutableList<MutableList<Int>>, times: Int = 100, getFirstSync: Boolean = false): Int? {
+    fun simulateOctopi(octoList: List<MutableList<Int>>, times: Int = 100, getFirstSync: Boolean = false): Int? {
         var flashCount = 0
 
         fun handleFlash(x: Int, y: Int){
@@ -20,10 +20,10 @@ fun main() {
         return if(!getFirstSync) flashCount else null
     }
     val input = readInput("input_day11").map { s -> s.map {
-        it.toString().toInt() }.toMutableList() }.toMutableList()
+        it.toString().toInt() }.toMutableList() }
     val input2 = readInput("input_day11").map { s -> s.map {
-        it.toString().toInt() }.toMutableList() }.toMutableList()
+        it.toString().toInt() }.toMutableList() }
 
     println("PART I: ${simulateOctopi(input, 100)}")
-    println("PART 2: ${simulateOctopi(input2, 1000, true)?: throw Exception("Try increasing steps!")}")
+    println("PART 2: ${simulateOctopi(input2, Int.MAX_VALUE, true)?: throw Exception("Try increasing steps!")}")
 }
