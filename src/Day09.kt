@@ -40,14 +40,6 @@ fun main() {
         }
         return allBasins.sortedDescending().take(3).toMutableList().reduce { acc, i -> acc * i }
     }
-
-    val test = """
-        2199943210
-        3987894921
-        9856789892
-        8767896789
-        9899965678
-    """.trimIndent().split("\n")
     val input = readInput("input_day09")
     println("PART I: ${part1(input)}")
     println("PART 2: ${part1(input, true)}")

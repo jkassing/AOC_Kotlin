@@ -1,7 +1,6 @@
 import java.io.File
 
 private val axisMap = mapOf("x" to 0, "y" to 1)
-
 private fun loadInput(): Pair<List<MutableList<Int>>, List<String>> {
     val input = File("src/data/", "input_day13.txt").readText().split("\n\n")
     return Pair(input[0].split("\n").map { it.split(",").map { c -> c.toInt() }.toMutableList() },
