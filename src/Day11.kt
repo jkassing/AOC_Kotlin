@@ -7,8 +7,8 @@ fun main() {
             flashCount++
             listOf(Pair(x,y+1), Pair(x,y-1), Pair(x+1,y), Pair(x-1,y),
                 Pair(x-1,y-1), Pair(x+1,y-1), Pair(x-1,y+1), Pair(x+1,y+1)).forEach {
-                if((octoList.getOrNull(it.first)?.getOrNull(it.second)!!) > 0) octoList[it.first][it.second]++
-                if((octoList.getOrNull(it.first)?.getOrNull(it.second)!!) > 9) handleFlash(it.first, it.second)
+                if((octoList.getOrNull(it.first)?.getOrNull(it.second) ?: -1) > 0) octoList[it.first][it.second]++
+                if((octoList.getOrNull(it.first)?.getOrNull(it.second) ?: 0) > 9) handleFlash(it.first, it.second)
             }
         }
 
