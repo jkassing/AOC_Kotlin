@@ -12,7 +12,6 @@ private fun findLowestRisk(input: List<List<Int>>): Int{
     val start = (0 to 0); val end = (input.size-1 to input.size-1)
     riskLevel[start] = 0
     pq.offer(Field(start, 0))
-
     // Dijkstra
     while (pq.isNotEmpty()){
         val field = pq.poll().pos
@@ -43,18 +42,12 @@ private fun Pair<Int, Int>.getNeighbors(max: Int): List<Pair<Int, Int>>{
 
 private fun bigInput(input: List<List<Int>>): List<List<Int>>{
     var newList = input.toMutableList()
-    fun getCost(cost:Int, i: Int) : Int{
-        val newCost = (cost + i + 1) % 9
-        return if(newCost == 0) 9 else newCost
-    }
-    repeat(4){ i ->
-        newList = MutableList(newList.size) {
-                row -> newList[row].plus(input[row].map { getCost(it, i) }) }
-    }
-    repeat(4){i ->
-        repeat(input.size){ row ->
-            newList.addAll(listOf(newList[row].map { getCost(it, i) }))
-        }
-    }
+    fun getCost(cost:Int, i: Int) : Int = if((cost + i + 1) % 9 == 0) 9 else (cost + i + 1) % 9
+    // y-axis extension
+    repeat(4){ i -> newList = MutableList(newList.size) {
+            row -> newList[row].plus(input[row].map { getCost(it, i) }) } }
+    // x-axis extension
+    repeat(4){i -> repeat(input.size){ row ->
+            newList.addAll(listOf(newList[row].map { getCost(it, i) })) } }
     return newList
 }
